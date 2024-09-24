@@ -1,6 +1,8 @@
 from locust import HttpUser, task, between
 import random
 
+#박준걸 코드
+
 class UserBehavior(HttpUser):
     wait_time = between(1, 2)
 
