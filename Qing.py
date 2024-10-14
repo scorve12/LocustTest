@@ -12,20 +12,20 @@ class WebsiteUser(HttpUser):
         
         self.client.get("/api/profile")
         self.csrftoken = self.client.cookies.get('csrftoken')
-        self.headers = {'X-CSRFToken': self.csrftoken, "Content-Type": "application/x-www-form-urlencoded"}
-
+        self.headers = {'X-CSRFToken': self.csrftoken, "Content-Type": "application/json"}
+        
         user_data = {
             "username": "test1",
-            "password": "cnlab01"
+            "password": "cnlab123"
         }
     
         with self.client.post("/api/login",
                               json=user_data, 
                               headers=self.headers,
                               catch_response=True) as response:   
-            if response.cookies:
                 self.sessionid = response.cookies.get('sessionid')
-                print(f"Session ID: {self.sessionid}")
+                self.csrftoken = response.cookies.get('csrftoken')
+                print(f"Login status: {response.text}")
     @task
     def submit(self):
         problem_data = {
@@ -43,6 +43,4 @@ class WebsiteUser(HttpUser):
                               json=problem_data, 
                               headers=self.headers,
                               catch_response=True) as response:
-            print(f"Submission status: {response.status_code}")
-            if response.status_code != 200:
-                response.failure("Failed to submit")
+            print(f"Submission status: {response.text}")
