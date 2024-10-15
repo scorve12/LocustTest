@@ -1,4 +1,4 @@
-problem_data = [
+failed_data = [
         {
             'problem_id': 1,
             'language': 'Python3',

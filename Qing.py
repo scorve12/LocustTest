@@ -1,10 +1,11 @@
-from locust import HttpUser, task, between
+from locust import HttpUser, TaskSet, task, between
 import random
-from answer.Qing_answer import problem_data
+from Qing_answer import problem_data
+from Qing_failed import failed_data
 
 #김재호 코드
 
-class WebsiteUser(HttpUser):
+class AlgorithmTest(TaskSet):
     def wait_time(self):
         lambd = 1 / 30  # 평균 30초 대기
         return random.expovariate(lambd)  # 포아송 분포 기반 대기 시간 반환
@@ -34,8 +35,8 @@ class WebsiteUser(HttpUser):
                 self.sessionid = response.cookies.get('sessionid')
                 self.csrftoken = response.cookies.get('csrftoken')
                 print(f"Login status: {response.text}")
-    @task
-    def submit(self):
+    @task(3)
+    def submit_ok(self):
         
         problem = random.choice(problem_data)
         
@@ -49,3 +50,23 @@ class WebsiteUser(HttpUser):
                               headers=self.headers,
                               catch_response=True) as response:
             print(f"Submission status: {response.text}")
+            
+    @task(7)
+    def submit_failed(self):
+        
+        problem = random.choice(failed_data)
+        
+        self.headers = {
+            'Cookie': f'sessionid={self.sessionid}; csrftoken={self.csrftoken}',
+            'X-CSRFToken': self.csrftoken
+        }
+        
+        with self.client.post("/api/submission", 
+                              json=problem, 
+                              headers=self.headers,
+                              catch_response=True) as response:
+            print(f"Submission status: {response.text}")
+
+class StudentUser(HttpUser):
+    wait_time =  random.expovariate(1/360)# 평균 3분 대기
+    tasks = [AlgorithmTest]
