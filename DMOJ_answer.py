@@ -1,13 +1,13 @@
 problem_data = [
         {
-            'problem_id': 1,
-            'language': 'Python3',
+            'language': 8,
+            'judge': '',
             'code': """
 print("Hello, World!")
             """
         },{
-            'problem_id': 1,
             'language': 'C',
+            'judge': '',
             'code': """
 #include <stdio.h>
 int main() {
@@ -16,8 +16,8 @@ int main() {
 }
             """
         },{
-            'problem_id': 1,
             'language': 'Java',
+            'judge': '',
             'code': """
 public class Main{
     public static void main(String[] args){
@@ -28,13 +28,16 @@ public class Main{
         },
         #2번문제
         {
-        "problem_id": 3,
-        "language": "Python3",
-        "code": "i = int(input())\nprint(i)"
+            "language": 8,
+            'judge': '',
+            "source": """
+i = int(input())
+print(i)
+            """
         },{
-            "problem_id": 3,
             "language": "C",
-            "code": """
+            'judge': '',
+            "source": """
 #include <stdio.h>
     int main() {
         int i;
@@ -44,9 +47,9 @@ public class Main{
     }
             """
         },{
-            "problem_id": 3,
             "language": "Java",
-            "code": """
+            'judge': '',
+            "source": """
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -60,9 +63,9 @@ public class Main {
         },
         #3번문제
         {
-            "problem_id": 4,
             "language": "C",
-            "code": """
+            'judge': '',
+            "source": """
 #pragma warning(disable: 4996)
 #include<stdio.h>
 
@@ -101,11 +104,10 @@ int main(void)
 	return 0;
 }
             """         
-        },
-        {
-            "problem_id": 4,
-            "language": "Python3",
-            "code": """
+        },{
+            "language": 8,
+            'judge': '',
+            "source": """
 q = int(input())
 
 commands = input().strip()
@@ -124,11 +126,10 @@ for command in commands:
 
 print(a, b)
             """
-        },
-        {
-            "problem_id": 4,
+        },{
             "language": "Java",
-            "code": """
+            'judge': '',
+            "source": """
 import java.util.Scanner;
 
 public class Main {
@@ -168,9 +169,9 @@ public class Main {
         },
         #4번문제
         {
-            "problem_id": 5,
             "language": "C",
-            "code": """
+            'judge': '',
+            "source": """
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -201,11 +202,10 @@ int main() {
     return 0;
 }
             """
-        },
-        {
-            "problem_id": 5,
+        },{
             "language": "C++",
-            "code": """
+            'judge': '',
+            "source": """
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -228,11 +228,10 @@ int main()
     cout<<i-1;
 }
             """
-        },
-        {
-            "problem_id": 5,
+        },{
             "language": "Ptyhon3",
-            "code": """
+            'judge': '',
+            "source": """
 N, K = map(int, input().split())
 arr = list(map(int, input().split()))
 
@@ -247,11 +246,10 @@ for i in range(1, N + 1):
     
 print(i - 1)
             """
-        },
-        {
-            "problem_id": 5,
+        },{
             "language": "Java",
-            "code": """
+            'judge': '',
+            "source": """
 import java.util.*;
 
 public class Main {  
@@ -288,9 +286,9 @@ public class Main {
         },
         #5번문제
         {
-            "problem_id": 6,
             "language": "C",
-            "code":"""
+            'judge': '',
+            "source":"""
 #include <stdio.h>
 
 #define MOD 1000000007
@@ -331,7 +329,7 @@ int main() {
 
         for (int j = 0; j < size2; j++) {
             for (int k = 0; k < size2; k++) {
-if ((chk2[j] & ~chk2[k]) == chk2[j]) {
+                if ((chk2[j] & ~chk2[k]) == chk2[j]) {
                     dp2[chk2[j]] += a2[chk2[k]];
                     dp2[chk2[j]] %= MOD;
                 }
@@ -364,11 +362,10 @@ if ((chk2[j] & ~chk2[k]) == chk2[j]) {
 }
 
             """
-        },
-        {
-            "problem_id": 6,
+        },{
             "language": "C++",
-            "code": """
+            'judge': '',
+            "source": """
 import java.util.Scanner;
 
 public class Main {
@@ -431,11 +428,10 @@ public class Main {
     }
 }
             """
-        },
-        {
-            "problem_id": 6,
-            "language": "Python3",
-            "code": """
+        },{
+            "language": 8,
+            'judge': '',
+            "source": """
 n = int(input())
 chk2=[0,1,2]
 chk3=[0,1,2,4,5]
@@ -465,9 +461,9 @@ print(sum(dp2)*sum(dp2)*sum(dp3)%1000000007)
         },
         #6번문제
         {
-            "problem_id": 7,
             "language": "C",
-            "code":"""
+            'judge': '',
+            "source":"""
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
@@ -533,9 +529,9 @@ int main()
 }
             """
         },{
-            "problem_id": 7,
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.util.*;
 
 class Change{
@@ -604,9 +600,9 @@ public class Color {
         },
         #7번문제
         {
-            "problem_id": 8,
             "language": "C",
-            "code":"""
+            'judge': '',
+            "source":"""
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -648,9 +644,9 @@ int main() {
 }
             """
         },{
-            "problem_id": 8,
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.util.*;
 import java.io.*;
 
@@ -722,9 +718,9 @@ public class Main {
         },
         #8번문제
         {
-            "problem_id": 9,
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.util.*;
 
 public class Main {
@@ -773,11 +769,10 @@ public class Main {
     }
 }
             """
-        },
-        {
-            "problem_id": 9,
+        },{
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -831,9 +826,9 @@ public class Main{
         },
         #9번문제
         {
-            "problem_id": 10,
             "language": "C",
-            "code":"""
+            'judge': '',
+            "source":"""
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
@@ -855,11 +850,10 @@ int main(void)
 	return 0;
 }
             """
-        },
-        {
-            "problem_id": 10,
+        },{
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.io.FileInputStream;
 import java.util.*;
 import java.util.stream.*;
@@ -895,9 +889,9 @@ if(M>=arr[i]){
         },
         #10번문제
         {
-            "problem_id": 11,
             "language": "Java",
-            "code":"""
+            'judge': '',
+            "source":"""
 import java.util.*;
 
 public class Main {
@@ -930,11 +924,10 @@ public class Main {
 
 }
             """
-        },
-        {
-            "problem_id": 11,
+        },{
             "language": "C++",
-            "code":"""
+            'judge': '',
+            "source":"""
 #include <algorithm>
 #include <iostream>
 #include <vector>

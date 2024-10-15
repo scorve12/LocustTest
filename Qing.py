@@ -1,6 +1,6 @@
 from locust import HttpUser, task, between
 import random
-from Qing_answer import problem_data
+from answer.Qing_answer import problem_data
 
 #김재호 코드
 
