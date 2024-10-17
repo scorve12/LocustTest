@@ -1,9 +1,9 @@
-problem_data1 = [
+failed_data1 = [
         {
             "judge": "",
             "language": 8,
             "source": """
-print("Hello, World!")
+print("He World!")
             """
         },{
             "judge": "",
@@ -11,28 +11,28 @@ print("Hello, World!")
             "source": """
 #include <stdio.h>
 int main() {
-    printf("Hello, World!"); 
+    printf("He, World!"); 
     return 0;
 }
             """
         },{
             "judge": "",
-            "language": 9,
+            "language": 4,
             "source": """
 public class Main{
     public static void main(String[] args){
-        System.out.print("Hello, World!");
+        System.out.print("Heo, World!");
     }
 }
             """
         }]
-problem_data2 = [
+failed_data2 = [
         {
         "judge": "",
         "language": 8,
         "source": """
-i = int(input())
-print(i)
+i = input()
+print("i")
         """
         
         },{
@@ -41,7 +41,6 @@ print(i)
             "source": """
 #include <stdio.h>
     int main() {
-        int i;
         scanf(\"%d\", &i);
         printf(\"%d\", i);
         return 0;
@@ -49,7 +48,7 @@ print(i)
             """
         },{
             "judge": "",
-            "language": 9,
+            "language": 4,
             "source": """
 import java.util.Scanner;
 public class Main {
@@ -62,7 +61,7 @@ public class Main {
 }
             """
         }]
-problem_data3 = [
+failed_data3 = [
         {
             "judge": "",
             "language": 4,
@@ -81,21 +80,21 @@ int main(void)
 
 	scanf(" %[^\n]s", str);
 
-	while (str[i] != "\0") {
+	while (str[i] != '\0') {
 
-		if (str[i] == "R") {
+		if (str[i] == 'R') {
 			if (b + 1 <= q) b = b + 1;
 			else b = q;
 		}
-		else if (str[i] == "L") {
+		else if (str[i] == 'l') {
 			if (b - 1 >= 1)	b = b - 1;
 			else b = 1;
 		}
-		else if (str[i] == "U") {
+		else if (str[i] == 'U') {
 			if (a - 1 >= 1)	a = a - 1;
 			else a = 1;
 		}
-		else if (str[i] == "D") {
+		else if (str[i] == 'D') {
 			if (a + 1 <= q)	a = a + 1;
 			else a = q;
 		}
@@ -116,13 +115,13 @@ commands = input().strip()
 a, b = 1, 1
 
 for command in commands:
-    if command == "R":
+    if command == 'R':
         b = min(b + 1, q)
-    elif command == "L":
-        b = max(b - 1, 1)
-    elif command == "U":
+    elif command == 'L':
+        b = max(b + 1, 1)
+    elif command == 'U':
         a = max(a - 1, 1)
-    elif command == "D":
+    elif command == 'D':
         a = min(a + 1, q)
 
 print(a, b)
@@ -138,7 +137,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int q = scanner.nextInt();
-        scanner.nextLine(); // 정수 입력 후 남은 개행 문자 처리
 
         String commands = scanner.nextLine();
 
@@ -146,16 +144,16 @@ public class Main {
         for (int i = 0; i < commands.length(); i++) {
             char command = commands.charAt(i);
             switch (command) {
-                case "R":
+                case 'R':
                     b = (b + 1 <= q) ? b + 1 : q;
                     break;
-                case "L":
+                case 'L':
                     b = (b - 1 >= 1) ? b - 1 : 1;
                     break;
-                case "U":
+                case 'U':
                     a = (a - 1 >= 1) ? a - 1 : 1;
                     break;
-                case "D":
+                case 'D':
                     a = (a + 1 <= q) ? a + 1 : q;
                     break;
                             }
@@ -168,7 +166,7 @@ public class Main {
 }
             """
         }]
-problem_data4 = [
+failed_data4 = [
         {
             "judge": "",
             "language": 4,
@@ -228,7 +226,7 @@ int main()
     for(i = 1 ; i <=N ;i++)
     if( ((arr[N-i]+sum)/i) >= K) sum += arr[N-i];
     else break;
-    cout<<i-1;
+    cout<<;
 }
             """
        },{
@@ -252,7 +250,7 @@ print(i - 1)
             """
        },{
             "judge": "",
-            "language": 9,
+            "language": 4,
             "source"
 : """
 import java.util.*;
@@ -289,7 +287,7 @@ public class Main {
 
             """
         }]
-problem_data5 = [
+failed_data5 = [
         {
             "judge": "",
             "language": 4,
@@ -352,11 +350,6 @@ if ((chk2[j] & ~chk2[k]) == chk2[j]) {
         }
     }
 
-    int sum2 = 0, sum3 = 0;
-    for (int i = 0; i < 4; i++) {
-        sum2 += dp2[i];
-        sum2 %= MOD;
-    }
     for (int i = 0; i < 9; i++) {
         sum3 += dp3[i];
         sum3 %= MOD;
@@ -370,7 +363,7 @@ if ((chk2[j] & ~chk2[k]) == chk2[j]) {
             """
        },{
             "judge": "",
-            "language": 9,
+            "language": 15,
             "source": """
 import java.util.Scanner;
 
@@ -450,7 +443,7 @@ for i in range(n-1):
   dp2=[0 for x in range(4)]
   dp3=[0 for x in range(9)]
 
-  for j in chk2:
+  for j in cnk3:
     for k in chk2:
       if j&~k==j:
         dp2[j]+=a2[k]
@@ -465,7 +458,7 @@ for i in range(n-1):
 print(sum(dp2)*sum(dp2)*sum(dp3)%1000000007)
             """
         }]
-problem_data6 = [
+failed_data6 = [
         {
             "judge": "",
             "language": 4,
@@ -554,7 +547,6 @@ class Change{
       ColorChange(a,x-1,y);
       ColorChange(a,x+1,y);
       ColorChange(a,x,y-1);
-      ColorChange(a,x,y+1);
    }
    
    static void IsAllOne(int[][] a,int Times) {
@@ -592,7 +584,7 @@ public class Main {
       
       for(int i=0; i<tries; i++) {
       Change.ChangeSide(grid,RC[2*i]-1,RC[2*i+1]-1); 
-      Change.IsAllOne(grid, i+1); 
+      Change.IsAllOne(grid, i); 
       }
       Change.PrintSuc(); 
 
@@ -604,10 +596,10 @@ public class Main {
 }
             """
         }]
-problem_data7 = [
+failed_data7 = [
         {
             "judge": "",
-            "language": 15,
+            "language": 8,
             "source":"""
 #include <iostream>
 #include <vector>
@@ -681,7 +673,6 @@ public class Main {
     
     public static int search(int i, int j) {
         if ((i < 0 || i > h-1) || (j < 0 || j > w-1)) 
-            return 0;
             
         if (island[i][j] == false) {
             island[i][j] = true;
@@ -722,10 +713,10 @@ public class Main {
 }
             """
         }]
-problem_data8 = [
+failed_data8 = [
         {
             "judge": "",
-            "language": 9,
+            "language": 4,
             "source":"""
 import java.util.*;
 
@@ -772,8 +763,6 @@ public class Main {
             }
         }
 
-        System.out.print(count);
-        sc.close();
     }
 }
 
@@ -802,7 +791,7 @@ public class Main{
          arr.add(new ArrayList<Integer>());
       }
       
-      for(int i = 0; i < y; i++) {
+      for(int i = 0; i < y; ++i) {
          int a = s.nextInt()-1;
          int b = s.nextInt()-1;
          arr.get(a).add(b);
@@ -833,13 +822,11 @@ public class Main{
 }
             """
         }]
-problem_data9 = [
+failed_data9 = [
         {
             "judge": "",
             "language": 4,
             "source":"""
-#include<stdio.h>
-
 int main() {
 	int n,k,i,count=0;
 	scanf("%d %d",&n,&k);
@@ -882,7 +869,7 @@ public class Main {
 				idx = i;
 		}
 		s.close();
-		for(int i = idx; i >= 0; i--) {
+		for(int i = idx; i > 0; i--) {
 			while(K >= money[i]) {
 				K = K-money[i];
 				count++;	
@@ -891,10 +878,9 @@ public class Main {
 		System.out.println(count);
 	}
 }
-
             """
         }]
-problem_data10 = [
+failed_data10 = [
         {
             "judge": "",
             "language": 9,
@@ -926,111 +912,38 @@ public class Main {
 				System.out.print(node.get(j)+" ");
 			}
 			System.out.println();
-		}
+		
 	}
 
 }
             """
        },{
             "judge": "",
-            "language": 4,
+            "language": 15,
             "source":"""
-#include <stdio.h>
-#include <stdlib.h>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+using namespace std;
 
-//#define MAX_VERTICES 50
-#define MAX_VERTICES 30000
-typedef struct GraphNode
-{
-	int vertex;
-	struct GraphNode* link;
-} GraphNode;
-
-typedef struct GraphType {
-	int n;	// 정점의 개수
-	GraphNode* adj_list[MAX_VERTICES];
-} GraphType;
-
-// 그래프 초기화 
-void init(GraphType* g)
-{
-	int v;
-	g->n = 0;
-	for (v = 0; v<MAX_VERTICES; v++)
-		g->adj_list[v] = NULL;
-}
-
-// 정점 삽입 연산
-void insert_vertex(GraphType* g, int v)
-{
-	if (((g->n) + 1) > MAX_VERTICES) {
-		fprintf(stderr, "그래프: 정점의 개수 초과");
-		return;
-	}
-	g->n++;
-}
-
-// 간선 삽입 연산, v를 u의 인접 리스트에 삽입한다.
-void insert_edge(GraphType* g, int u, int v)
-{
-	GraphNode* node;
-	if (u >= g->n || v >= g->n) {
-		fprintf(stderr, "그래프: 정점 번호 오류");
-		return;
-	}
-	node = (GraphNode*)malloc(sizeof(GraphNode));
-	node->vertex = v;
-	node->link = g->adj_list[u];
-	g->adj_list[u] = node;
-}
-
-void print_adj_list(GraphType* g) 
-{
-	for (int i = 0; i<g->n; i++) {
-    int cnt=0;
-    int arr[MAX_VERTICES];
-    
-		GraphNode* p = g->adj_list[i];
-		//printf("정점 %d의 인접 리스트 ", i);
-		while (p!=NULL) {
-			//printf("-> %d ", p->vertex+1);
-			//printf("%d ", p->vertex+1);
-      arr[cnt++]=p->vertex+1;
-			p = p->link;
-		}
-
-    for(int i=cnt-1; i>=0; i--)
-      printf("%d ", arr[i]);
-		printf("\n");
-	}
-}
-
-int main()
-{
-  int N, M;
-  scanf("%d%d", &N, &M);
-  
-	GraphType *g;
-	g = (GraphType *)malloc(sizeof(GraphType));
-	init(g);
-	//for(int i=0;i<5;i++)	insert_vertex(g, i);
-  for(int i=0;i<N;i++)	insert_vertex(g, i);
-
-  int a, b;
-  for(int i=0; i<M; i++) {
-    scanf("%d%d", &a, &b);
-    // table[a-1][b-1]=1;
-    // table[b-1][a-1]=1;
-    insert_edge(g, a-1, b-1);
-    insert_edge(g, b-1, a-1);
+vector <int> graph[30000];  
+int main() {
+  int n, m;
+  cin >> n >> m;
+  int node;
+  int link;
+  for(int i=0;i<m;i++){
+    cin>>node>>link;
+    graph[node].push_back(link);
+    graph[link].push_back(node);
   }
-  
-	print_adj_list(g);
-	free(g);
-	return 0;
+  for(int i=1;i<=n;i++){
+    for(int j:graph[i]){
+      cout<<j<<" ";
+    }
+    
+  }
 }
             """
-        },
-]
-
-problem_data = [problem_data1, problem_data2, problem_data3, problem_data4, problem_data5, problem_data6, problem_data7, problem_data8, problem_data9, problem_data10]
+        }]
+failed_data = [failed_data1, failed_data2, failed_data3, failed_data4, failed_data5, failed_data6, failed_data7, failed_data8, failed_data9, failed_data10]

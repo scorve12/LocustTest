@@ -30,7 +30,11 @@ public class Main{
         {
         "problem_id": 3,
         "language": "Python3",
-        "code": "i = int(input())\nprint(i)"
+        "code": """
+i = int(input())
+print(i)
+        """
+        
         },{
             "problem_id": 3,
             "language": "C",
@@ -40,7 +44,7 @@ public class Main{
         int i;
         scanf(\"%d\", &i);
         printf(\"%d\", i);
-        return 0;\n
+        return 0;
     }
             """
         },{
@@ -138,7 +142,7 @@ public class Main {
 
         String commands = scanner.nextLine();
 
-        int a = 1, b = 1
+        int a = 1, b = 1;
         for (int i = 0; i < commands.length(); i++) {
             char command = commands.charAt(i);
             switch (command) {
@@ -194,9 +198,10 @@ int main() {
         } else {
             break;
         }
-    printf("%d\n", i - 1);
+    printf("%d", i - 1);
 
     return 0;
+    }
 }
             """
        },{
@@ -227,7 +232,7 @@ int main()
             """
        },{
             "problem_id": 5,
-            "language": "Ptyhon3",
+            "language": "Python3",
             "code": """
 N, K = map(int, input().split())
 arr = list(map(int, input().split()))
@@ -353,7 +358,7 @@ if ((chk2[j] & ~chk2[k]) == chk2[j]) {
         sum3 %= MOD;
     }
 
-    printf("%lld\n", ((long long)sum2 * sum2 % MOD) * sum3 % MOD);
+    printf("%lld", ((long long)sum2 * sum2 % MOD) * sum3 % MOD);
 
     return 0;
 }
@@ -361,7 +366,7 @@ if ((chk2[j] & ~chk2[k]) == chk2[j]) {
             """
        },{
             "problem_id": 6,
-            "language": "C++",
+            "language": "Java",
             "code": """
 import java.util.Scanner;
 
@@ -565,7 +570,7 @@ class Change{
    
 }
 
-public class Color {
+public class Main {
 
    public static void main(String[] args) {
       Scanner scan=new Scanner(System.in);
@@ -598,7 +603,7 @@ public class Color {
         #7번문제
         {
             "problem_id": 8,
-            "language": "C",
+            "language": "C++",
             "code":"""
 #include <iostream>
 #include <vector>
@@ -722,15 +727,18 @@ import java.util.*;
 
 public class Main {
     public static void dom1(int a, LinkedList<Integer>[] abc, int[] visit) {
-        for(int i=1; i<2001; i++) {
-            if(visit[a] == 0)
-                dom2(a, abc, visit);
+        if (visit[a] == 0) {
+            dom2(a, abc, visit);
         }
     }
 
     public static void dom2(int a, LinkedList<Integer>[] abc, int[] visit) {
         visit[a] = 1;
-        abc[a].forEach(o -> {if(visit[o]==0) dom2(o, abc, visit);});
+        for (int o : abc[a]) {
+            if (visit[o] == 0) {
+                dom2(o, abc, visit);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -740,31 +748,31 @@ public class Main {
         int q = sc.nextInt();
 
         LinkedList<Integer>[] abc = new LinkedList[2001];
-        int[] visit = new int[2001];
-        for(int i=1; i<p+1; i++) 
-            abc[i] = new LinkedList();
+        for (int i = 0; i < 2001; i++) {
+            abc[i] = new LinkedList<>();
+        }
 
-        for(int i=0; i<q; i++) {
+        for (int i = 0; i < q; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
-
             abc[a].add(b);
         }
 
-        int c = 0;
-        int s = 1;
-
+        int[] visit = new int[2001];
         dom1(1, abc, visit);
 
-        for(int i=1; i<2001; i++) {
-            if(visit[i]==1)
-                c++;
+        int count = 0;
+        for (int i = 1; i < 2001; i++) {
+            if (visit[i] == 1) {
+                count++;
+            }
         }
 
-        System.out.print(c);
+        System.out.print(count);
         sc.close();
     }
 }
+
             """
        },{
             "problem_id": 9,
@@ -826,62 +834,60 @@ public class Main{
             "problem_id": 10,
             "language": "C",
             "code":"""
-#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
-int main(void)
-{
-	int N, K;
-	int count = 0;
-	scanf("%d %d", &N, &K);
-
-	int a[N];
-	for (int i = 0; i < N; i++)
-		scanf("%d", &a[i]);
-
-	for (int i = N - 1; i >= 0; i--) {
-		count += K / a[i];
-		K = K % a[i];
+int main() {
+	int n,k,i,count=0;
+	scanf("%d %d",&n,&k);
+	
+	int arr[n];
+	
+	for(i=0; i<n; i++){
+		scanf("%d",&arr[i]);
 	}
-	printf("%d", count);
-	return 0;
+	
+	for(i=n-1; i>=0; i--){
+		if(k<arr[i])
+			continue;
+		else
+			count += k/arr[i];
+			k = k%arr[i];
+	}
+	
+	printf("%d",count);
+	
+	return 0;    
 }
             """
        },{
             "problem_id": 10,
             "language": "Java",
             "code":"""
-import java.io.FileInputStream;
 import java.util.*;
-import java.util.stream.*;
 
-publicclassMain {
-publicstaticvoidmain(String[] args)throws Exception {
-        Scanner sc=new Scanner(new FileInputStream("input.txt"));
-
-
-int N= sc.nextInt();
-int M= sc.nextInt();
-int count=0;
-int[] arr=newint[N];
-for(int i=0; i<N; i++){
-            arr[i]= sc.nextInt();
-        }
-
-for(int i= N-1; i>=0; i--){
-if(M>=arr[i]){
-                count+= M/arr[i];
-                M= M%arr[i];
-            }
-
-        }
-
-        System.out.println(count);
-
-
-    }
-
+public class Main {
+	public static void main(String [] agrs) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int K = s.nextInt();
+		int [] money = new int[N];
+		int idx = 0, count = 0;
+		for(int i = 0; i < N; i++) {
+			money[i] = s.nextInt();
+			if(money[i] < K)
+				idx = i;
+		}
+		s.close();
+		for(int i = idx; i >= 0; i--) {
+			while(K >= money[i]) {
+				K = K-money[i];
+				count++;	
+			}
+		}
+		System.out.println(count);
+	}
 }
+
             """
         },
         #10번문제
@@ -923,32 +929,102 @@ public class Main {
             """
        },{
             "problem_id": 11,
-            "language": "C++",
+            "language": "C",
             "code":"""
-#include <algorithm>
-#include <iostream>
-#include <vector>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-vector <int> graph[30000];  
-int main() {
-  int n, m;
-  cin >> n >> m;
-  int node;
-  int link;
-  for(int i=0;i<m;i++){
-    cin>>node>>link;
-    graph[node].push_back(link);
-    graph[link].push_back(node);
-  }
-  for(int i=1;i<=n;i++){
-    for(int j:graph[i]){
-      cout<<j<<" ";
-    }
-    cout<<"\n";
-  }
+//#define MAX_VERTICES 50
+#define MAX_VERTICES 30000
+typedef struct GraphNode
+{
+	int vertex;
+	struct GraphNode* link;
+} GraphNode;
+
+typedef struct GraphType {
+	int n;	// 정점의 개수
+	GraphNode* adj_list[MAX_VERTICES];
+} GraphType;
+
+// 그래프 초기화 
+void init(GraphType* g)
+{
+	int v;
+	g->n = 0;
+	for (v = 0; v<MAX_VERTICES; v++)
+		g->adj_list[v] = NULL;
 }
 
+// 정점 삽입 연산
+void insert_vertex(GraphType* g, int v)
+{
+	if (((g->n) + 1) > MAX_VERTICES) {
+		fprintf(stderr, "그래프: 정점의 개수 초과");
+		return;
+	}
+	g->n++;
+}
+
+// 간선 삽입 연산, v를 u의 인접 리스트에 삽입한다.
+void insert_edge(GraphType* g, int u, int v)
+{
+	GraphNode* node;
+	if (u >= g->n || v >= g->n) {
+		fprintf(stderr, "그래프: 정점 번호 오류");
+		return;
+	}
+	node = (GraphNode*)malloc(sizeof(GraphNode));
+	node->vertex = v;
+	node->link = g->adj_list[u];
+	g->adj_list[u] = node;
+}
+
+void print_adj_list(GraphType* g) 
+{
+	for (int i = 0; i<g->n; i++) {
+    int cnt=0;
+    int arr[MAX_VERTICES];
+    
+		GraphNode* p = g->adj_list[i];
+		//printf("정점 %d의 인접 리스트 ", i);
+		while (p!=NULL) {
+			//printf("-> %d ", p->vertex+1);
+			//printf("%d ", p->vertex+1);
+      arr[cnt++]=p->vertex+1;
+			p = p->link;
+		}
+
+    for(int i=cnt-1; i>=0; i--)
+      printf("%d ", arr[i]);
+		printf("\n");
+	}
+}
+
+int main()
+{
+  int N, M;
+  scanf("%d%d", &N, &M);
+  
+	GraphType *g;
+	g = (GraphType *)malloc(sizeof(GraphType));
+	init(g);
+	//for(int i=0;i<5;i++)	insert_vertex(g, i);
+  for(int i=0;i<N;i++)	insert_vertex(g, i);
+
+  int a, b;
+  for(int i=0; i<M; i++) {
+    scanf("%d%d", &a, &b);
+    // table[a-1][b-1]=1;
+    // table[b-1][a-1]=1;
+    insert_edge(g, a-1, b-1);
+    insert_edge(g, b-1, a-1);
+  }
+  
+	print_adj_list(g);
+	free(g);
+	return 0;
+}
             """
         },
 ]
