@@ -10,14 +10,15 @@ from Qing_failed import failed_data
 #김재호 코드
 
 class AlgorithmTest(TaskSet):
-    start_time = time.time()
-
-    def wait_time(self):
-        elapsed_time = time.time() - self.start_time
-        dynmaic_wait_time = min(0.1 + (elapsed_time / 20), 300)
+    wait_time =  lambda self: random.expovariate(1 / 100 ) #푸와송 100초에 실행
+    # #start_time = time.time()
+    # def wait_time(self):
+    # #     elapsed_time = time.time() - self.start_time
+    # #     dynmaic_wait_time = min(0.1 + (elapsed_time / 10), (30 * 60)) # 0.1 ~ 진행시간 초 / 20 만큼 증가해서 300초까지 실행
         
-        print(f"Cuurent wait time: {dynmaic_wait_time:.2f}")
-        return dynmaic_wait_time
+    # #     print(f"Cuurent wait time: {dynmaic_wait_time:.2f}")
+    # #     return dynmaic_wait_time
+    #     return 120
         
         
 
@@ -44,6 +45,7 @@ class AlgorithmTest(TaskSet):
                               catch_response=True) as response:   
                 self.sessionid = response.cookies.get('sessionid')
                 self.csrftoken = response.cookies.get('csrftoken')
+        
     @task(5)
     def submit_ok(self):
         
@@ -77,6 +79,6 @@ class AlgorithmTest(TaskSet):
            print(response.status_code)
 
 class StudentUser(HttpUser):
-    #wait_time =  lambda self: random.expovariate(1 / 360 )
+    
     tasks = [AlgorithmTest]
     

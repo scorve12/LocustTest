@@ -1,30 +1,15 @@
 from locust import HttpUser, task, between, constant
+from locust import LoadTestShape
 import random
+
 import time
 
 from DMOJ_answer import problem_data
 from DMOJ_failed import failed_data
 
 class AlgorithmTest(HttpUser):
-    start_time = time.time()
-    
-    @property
-    def wait_time(self):
-        elapsed_time = time.time() - self.start_time  # 경과 시간 계산 (초 단위)
-
-        # 10분 단위로 대기 시간 변경
-        if elapsed_time < 5 * 60:  # 0~10분: 0.01초 대기
-            return constant(0.01)
-        elif elapsed_time < 10 * 60:  # 10~20분: 0.1초 대기
-            return constant(0.1)
-        elif elapsed_time < 15 * 60:  # 20~30분: 1초 대기
-            return constant(0.5)
-        elif elapsed_time < 20 * 60:  # 30~40분: 5초 대기
-            return constant(1)
-        elif elapsed_time < 25 * 60:  # 40~50분: 10초 대기
-            return constant(5)
-        else:  # 50~60분: 20초 대기
-            return constant(10)
+    # start_time = time.time()
+    wait_time = lambda self: int(random.expovariate(1/100)) 
 
     def get_csrf(self):
         
@@ -73,6 +58,7 @@ class AlgorithmTest(HttpUser):
         pro_data['csrfmiddlewaretoken'] = self.csrftoken
         
         with self.client.post(f"/problem/test{problem_number}/submit",
+        #with self.client.post(f"/problem/test1/submit",
                                 data=pro_data,
                                 headers=self.headers) as response:
              print(response.status_code)
@@ -88,11 +74,12 @@ class AlgorithmTest(HttpUser):
         pro_data['csrfmiddlewaretoken'] = self.csrftoken
 
         with self.client.post(f"/problem/test{problem_number}/submit",
+        #with self.client.post(f"/problem/test1/submit",
                                 data=pro_data,
                                 headers=self.headers) as response:
              print(response.status_code)
 
 
 class StudentUser(HttpUser):
-    #wait_time =  lambda self: random.expovariate(1/360)
+    
     tasks = [AlgorithmTest]            
